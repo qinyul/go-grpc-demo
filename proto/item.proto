@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package item;
+
+option go_package = "github.com/qinyul/go-grpc-demo/pkg/service";
+
+service ItemService {
+    rpc GetItems (Empty) returns (ItemsResponse);
+    rpc CreateUser (ItemRequest) returns (ItemResponse);
+}
+
+message Empty {}
+
+message ItemRequest {
+    string name = 2;
+}
+
+message ItemResponse {
+    string id = 1;
+    string name = 2;
+    string created_at = 3;
+    string updated_at = 4;
+}
+
+message ItemsResponse {
+    repeated ItemResponse items = 1;
+}

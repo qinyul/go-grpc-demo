@@ -1,0 +1,15 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    ports:
+      - "8000:8000"
+    command: ["./cmd/microservice/client/client"]
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    command: ["./cmd/microservice/server/server"]
